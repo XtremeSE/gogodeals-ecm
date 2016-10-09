@@ -26,11 +26,12 @@ start() ->
 	register(server,Pid).
 
 
-	%%==============================================
-	%%			BUG
-	%%=============================================
+	%% ==============================================
+	%% 	BUG: 	RFC1 Precence message
+	%% ==============================================
 	%	PresPid = lists:append("precence/", Pid),
 	%	publish(<<PresPid>>, precence(), 1).
+	%  ==============================================
 
 
 %% Disconnect from the broker an stop this client
@@ -70,14 +71,14 @@ loop(C) ->
   emqttc:disconnect(C).
 
 
-%% Provide a precence message in line with PRATA RFC #1
-precence() ->
-	lists:append("{
-  		version: 1,
-  		groupName: “X.E.S.”,
-  		groupNumber: “5”,
-  		connectedAt: “time”,
-  		rfcs: [", "1","],
-  		clientVersion: “1”,
-  		clientSoftware: “GogoDeals”     
-	}").
+%% %% Provide a precence message in line with PRATA RFC #1
+%% precence() ->
+%% 	lists:append("{
+%%  		version: 1,
+%%  		groupName: “X.E.S.”,
+%%  		groupNumber: “5”,
+%%  		connectedAt: “time”,
+%%  		rfcs: [", "1","],
+%%  		clientVersion: “1”,
+%%  		clientSoftware: “GogoDeals”     
+%%  	}").
